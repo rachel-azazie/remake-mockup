@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remake - Quick Reference Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; background: #f5f5f5; color: #333; font-size: 13px; line-height: 1.6; }
+
+  /* Header */
+  .header { background: #337ab7; color: #fff; padding: 20px 32px; }
+  .header h1 { font-size: 20px; font-weight: bold; margin-bottom: 4px; }
+  .header p { font-size: 13px; opacity: 0.85; }
+
+  /* Nav */
+  .nav { background: #fff; border-bottom: 1px solid #ddd; padding: 0 32px; position: sticky; top: 0; z-index: 10; }
+  .nav a { display: inline-block; padding: 10px 16px; font-size: 12px; color: #337ab7; text-decoration: none; border-bottom: 2px solid transparent; }
+  .nav a:hover { background: #f9f9f9; }
+  .nav a.active { font-weight: bold; color: #333; border-bottom-color: #337ab7; }
+
+  /* Content */
+  .content { max-width: 900px; margin: 0 auto; padding: 24px 32px; }
+
+  /* Section */
+  .section { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 20px; overflow: hidden; }
+  .section-header { background: #f9f9f9; padding: 10px 16px; border-bottom: 1px solid #ddd; font-size: 14px; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px; }
+  .section-header .tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: bold; }
+  .tag-standard { background: #337ab7; color: #fff; }
+  .tag-quick { background: #d9534f; color: #fff; }
+  .tag-info { background: #f0ad4e; color: #fff; }
+  .section-body { padding: 16px; }
+
+  /* Steps */
+  .step { display: flex; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #f0f0f0; }
+  .step:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .step-num { width: 28px; height: 28px; background: #337ab7; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+  .step.quick .step-num { background: #d9534f; }
+  .step-content { flex: 1; }
+  .step-title { font-weight: bold; font-size: 13px; margin-bottom: 4px; color: #333; }
+  .step-desc { font-size: 12px; color: #555; }
+  .step-desc code { background: #f5f5f5; border: 1px solid #ddd; padding: 1px 5px; border-radius: 2px; font-size: 11px; color: #d9534f; }
+  .step-nav { font-size: 12px; color: #888; margin-top: 4px; }
+  .step-nav strong { color: #333; }
+
+  /* Screenshot */
+  .screenshot { margin-top: 10px; border: 1px solid #ddd; border-radius: 3px; overflow: hidden; }
+  .screenshot img { width: 100%; display: block; }
+  .screenshot-caption { background: #f9f9f9; padding: 6px 10px; font-size: 11px; color: #888; border-top: 1px solid #eee; }
+
+  /* Alert boxes */
+  .alert { padding: 10px 14px; border-radius: 3px; font-size: 12px; margin-top: 8px; display: flex; align-items: flex-start; gap: 8px; }
+  .alert-warning { background: #fcf8e3; border: 1px solid #faebcc; color: #8a6d3b; }
+  .alert-danger { background: #f2dede; border: 1px solid #ebccd1; color: #a94442; }
+  .alert-info { background: #d9edf7; border: 1px solid #bce8f1; color: #31708f; }
+  .alert-icon { font-size: 14px; flex-shrink: 0; }
+
+  /* Table */
+  .ref-table { width: 100%; border-collapse: collapse; }
+  .ref-table th { background: #f9f9f9; padding: 8px 12px; text-align: left; font-size: 12px; color: #888; font-weight: bold; border-bottom: 2px solid #ddd; }
+  .ref-table td { padding: 8px 12px; font-size: 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .ref-table td:first-child { font-weight: bold; color: #333; white-space: nowrap; width: 140px; }
+
+  /* Contact cards */
+  .contacts { display: flex; gap: 16px; }
+  .contact-card { flex: 1; border: 1px solid #ddd; border-radius: 4px; padding: 14px; text-align: center; }
+  .contact-card .role { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .contact-card .name { font-size: 14px; font-weight: bold; color: #333; margin-bottom: 4px; }
+  .contact-card .desc { font-size: 11px; color: #888; }
+
+  /* Flow comparison */
+  .flow-compare { display: flex; gap: 16px; margin-bottom: 16px; }
+  .flow-card { flex: 1; border: 1px solid #ddd; border-radius: 4px; padding: 14px; }
+  .flow-card h4 { font-size: 13px; margin-bottom: 6px; }
+  .flow-card ul { list-style: none; font-size: 12px; color: #555; }
+  .flow-card ul li { padding: 3px 0; }
+  .flow-card ul li::before { content: '→ '; color: #bbb; }
+  .flow-card.recommended { border-color: #d9534f; background: #fff8f8; }
+  .flow-card.recommended h4 { color: #d9534f; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 16px; font-size: 11px; color: #999; border-top: 1px solid #eee; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Remake — Quick Reference Card</h1>
+  <p>Step-by-step guide for creating remake orders in CMS. For US & Domestic CS teams.</p>
+</div>
+
+<!-- Nav -->
+<div class="nav">
+  <a class="active" href="#choose">Which Flow?</a>
+  <a href="#standard">Standard Remake</a>
+  <a href="#quick">Quick Remake</a>
+  <a href="#exceptions">Exceptions</a>
+  <a href="#help">Need Help?</a>
+</div>
+
+<div class="content">
+
+  <!-- Which flow to use -->
+  <div class="section" id="choose">
+    <div class="section-header">Which Flow Should I Use?</div>
+    <div class="section-body">
+      <div class="flow-compare">
+        <div class="flow-card recommended">
+          <h4>Quick Remake (~80% of cases)</h4>
+          <ul>
+            <li>Full order remake</li>
+            <li>Logistics issues (RTS, lost package)</li>
+            <li>All items need to be remade</li>
+            <li>One click — fastest option</li>
+          </ul>
+        </div>
+        <div class="flow-card">
+          <h4>Standard Remake (~20% of cases)</h4>
+          <ul>
+            <li>Partial order remake</li>
+            <li>Quality issue on specific item(s)</li>
+            <li>Multi-package order, only one lost</li>
+            <li>Need to select specific items</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard Remake -->
+  <div class="section" id="standard">
+    <div class="section-header">Standard Remake (Manual Item Selection) <span class="tag tag-standard">Standard</span></div>
+    <div class="section-body">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Navigate to Remake Order Management</div>
+          <div class="step-desc">
+            Two ways to get there:
+          </div>
+          <div class="step-nav">
+            <strong>Path A:</strong> Customer Service → Order Others → Place Remake Order<br>
+            <strong>Path B:</strong> Customer Service → Order Management → find the order
+          </div>
+          <div class="screenshot">
+            <img src="1 (1).png" alt="Customer Service menu navigation">
+            <div class="screenshot-caption">Customer Service > Order Others > Place Remake Order</div>
+          </div>
+          <div class="step-desc" style="margin-top: 10px;">Enter the original order number and click <strong>Submit</strong>.</div>
+          <div class="screenshot">
+            <img src="1.png" alt="Remake Order Management search">
+            <div class="screenshot-caption">Remake Order Management — enter order number</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Review Order & Customer Information</div>
+          <div class="step-desc">
+            The system displays order details, shipping info, and customer info. You can edit customer information here or in the ERP system.
+          </div>
+          <div class="screenshot">
+            <img src="2.png" alt="Order information page">
+            <div class="screenshot-caption">Order Information — review before proceeding</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Select Items & Click "Add to Remake"</div>
+          <div class="step-desc">
+            Scroll to the product list. For each item you want to remake, click <strong>"Add to Remake"</strong>.
+          </div>
+          <div class="alert alert-warning">
+            <span class="alert-icon">&#9888;</span>
+            <span>The system does not support remaking the <strong>Azazie wedding garment bag</strong> alone (complimentary item).</span>
+          </div>
+          <div class="screenshot">
+            <img src="3.png" alt="Add items to remake">
+            <div class="screenshot-caption">Click "Add to Remake" for each item</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Click "Create Order" & Reconfirm</div>
+          <div class="step-desc">
+            The system will ask you to reconfirm:
+          </div>
+          <ul style="margin: 6px 0 0 16px; font-size: 12px; color: #555;">
+            <li>Do you want to change the order email?</li>
+            <li>Do you want to change the tracking number?</li>
+            <li>Do you want to change the customer email?</li>
+          </ul>
+          <div class="alert alert-danger" style="margin-top: 8px;">
+            <span class="alert-icon">&#9888;</span>
+            <span>Make sure the customer email is <strong>NOT</strong> set to <code>remake@i9i8.com</code>. Change it to the customer's actual email.</span>
+          </div>
+          <div class="screenshot">
+            <img src="4.png" alt="Create order confirmation">
+            <div class="screenshot-caption">Reconfirm details before creating the order</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Wait ~1 Minute for Order Creation</div>
+          <div class="step-desc">
+            A popup will confirm the remake order has been created. Find the <strong>new remake order number</strong> in the <strong>Status Change</strong> tab.
+          </div>
+          <div class="screenshot">
+            <img src="5.png" alt="Order created confirmation">
+            <div class="screenshot-caption">Success — remake order created, visible in Status Change</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Verify in ERP</div>
+          <div class="step-desc">
+            After the order syncs to ERP, you'll see the new remake order linked to the original order.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Quick Remake -->
+  <div class="section" id="quick">
+    <div class="section-header">Quick Remake (One-Click Full Order) <span class="tag tag-quick">Quick</span></div>
+    <div class="section-body">
+
+      <div class="step quick">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Navigate to Remake Order Management</div>
+          <div class="step-desc">
+            Same as Standard Remake — go to <strong>Customer Service</strong> → <strong>Order Others</strong> → <strong>Place Remake Order</strong>, enter the order number, and click <strong>Submit</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="step quick">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Click "Remake All"</div>
+          <div class="step-desc">
+            At the top of the order detail, you'll see the <strong>Quick Remake</strong> section. Click the <strong style="color: #d9534f;">"Remake All"</strong> button.
+          </div>
+          <div class="alert alert-info">
+            <span class="alert-icon">&#8505;</span>
+            <span>This will automatically select all available items and pre-fill the original order information.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step quick">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Confirm Remake Details</div>
+          <div class="step-desc">
+            A confirmation dialog shows: original order number, items to remake, customer email, and shipping address. Verify everything is correct.
+          </div>
+          <div class="alert alert-danger">
+            <span class="alert-icon">&#9888;</span>
+            <span>Make sure the customer email is correct and <strong>NOT</strong> set to <code>remake@i9i8.com</code>. The system will warn you if it detects the default email.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step quick">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Wait ~1 Minute for Order Creation</div>
+          <div class="step-desc">
+            The system will process and show a success popup with the new remake order number.
+          </div>
+        </div>
+      </div>
+
+      <div class="step quick">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Verify in Status Change</div>
+          <div class="step-desc">
+            Click <strong>"View in Status Change"</strong> in the success popup, or go to the <strong>Status Change</strong> tab to see the new entry.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Exceptions & Important Notes -->
+  <div class="section" id="exceptions">
+    <div class="section-header">Exceptions & Important Notes <span class="tag tag-info">Reference</span></div>
+    <div class="section-body" style="padding: 0;">
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Garment bags</td>
+            <td>Complimentary garment bags cannot be remade alone. They will show as "Unavailable" in the product list.</td>
+          </tr>
+          <tr>
+            <td>Customer email</td>
+            <td>Always verify the customer email before creating a remake order. The default <code>remake@i9i8.com</code> must be changed to the customer's actual email.</td>
+          </tr>
+          <tr>
+            <td>Partial remake</td>
+            <td>If an order was shipped in multiple packages and only one is lost, use the <strong>Standard Remake</strong> flow to select specific items.</td>
+          </tr>
+          <tr>
+            <td>Custom items</td>
+            <td>Items with customization (photo, embroidery, letters) may not be remakeable if historical data is unavailable. Contact Early for manual handling.</td>
+          </tr>
+          <tr>
+            <td>Processing time</td>
+            <td>Order creation takes ~1 minute. <strong>Do not close the page</strong> during processing.</td>
+          </tr>
+          <tr>
+            <td>Tax ID countries</td>
+            <td>Some countries require tax ID for shipping. If the order is flagged, verify tax info before proceeding or contact Early.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Need Help? -->
+  <div class="section" id="help">
+    <div class="section-header">Need Help?</div>
+    <div class="section-body">
+      <div class="contacts">
+        <div class="contact-card">
+          <div class="role">Domestic CS Contact</div>
+          <div class="name">Early</div>
+          <div class="desc">Process questions, exception handling, escalations</div>
+        </div>
+        <div class="contact-card">
+          <div class="role">US CS Contact</div>
+          <div class="name">Jennifer</div>
+          <div class="desc">US team permissions, access requests, training</div>
+        </div>
+        <div class="contact-card">
+          <div class="role">System Support</div>
+          <div class="name">Tech Team</div>
+          <div class="desc">System errors, bugs — submit via internal ticket</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Remake Quick Reference Card &nbsp;|&nbsp; Last updated: 2026-03-24 &nbsp;|&nbsp; Maintained by Product Team
+</div>
+
+</body>
+</html>
